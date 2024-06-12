@@ -5,8 +5,8 @@
 	top: 0;
 	width: 100%;
 	display: flex;
-	justify-content: space-between; /* Add this line */
-	align-items: center; /* Add this line */
+	justify-content: space-between;
+	align-items: center;
   }
   
   .logo {
@@ -30,7 +30,7 @@
   .nav-links {
 	display: flex;
 	margin-right: 3rem;
-	align-items: center; 
+	align-items: center;
 	gap: 2rem;
   }
   
@@ -38,10 +38,43 @@
 	color: white;
 	text-decoration: none;
 	font-size: 1.2rem;
-	margin-left: 1rem; 
+	margin-left: 1rem;
   }
   
   .nav-link svg {
 	margin-right: 0.5rem;
+  }
+  
+  .menu-icon {
+	display: none;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+	.nav-links {
+	  display: none;
+	}
+  
+	.menu-icon {
+	  display: block;
+	  margin-right: 3rem;
+	}
+  
+	.nav-links.show {
+	  display: flex;
+	  flex-direction: column;
+	  position: absolute;
+	  top: 100%;
+	  left: 0;
+	  right: 0;
+	  background-color: #81a064;
+	  padding: 1rem;
+	}
+  
+	.nav-link {
+	  margin: 0.5rem 0;
+	}
   }
   
