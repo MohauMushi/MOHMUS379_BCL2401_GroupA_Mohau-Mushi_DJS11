@@ -45,13 +45,7 @@ const HomePage = () => {
               <p className="show-description">
                 {showFullDescription[show.id]
                   ? show.description
-                  : `${show.description.slice(0, 100)}...`}
-                <button
-                  className="read-more-btn"
-                  onClick={() => toggleDescription(show.id)}
-                >
-                  {showFullDescription[show.id] ? "Read Less" : "Read More"}
-                </button>
+                  : `${show.description.slice(0, 140)}...`}
               </p>
               <p className="show-seasons">Seasons: {show.seasons}</p>
               <p className="show-updated">
