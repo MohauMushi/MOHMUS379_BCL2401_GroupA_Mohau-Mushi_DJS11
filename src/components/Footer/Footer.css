@@ -1,0 +1,13 @@
+/* Footer.css */
+footer {
+  background-color: #ccd5ae;
+  color: whitesmoke;
+  height: 74px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
