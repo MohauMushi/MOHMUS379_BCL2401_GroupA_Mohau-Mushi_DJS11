@@ -3,11 +3,13 @@ import { fetchPodcasts } from "../../api/api";
 import { CircularProgress } from "@material-ui/core";
 import "./HomePage.css";
 import { mapGenres } from "../../utils/helperFunctions";
+import { useSearchParams } from "react-router-dom";
+import GenreFilter from "../FilterSong/FilterSongsDropdown";
 
 const HomePage = () => {
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const [showFullDescription, setShowFullDescription] = useState({});
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const getPodcasts = async () => {
@@ -19,15 +21,22 @@ const HomePage = () => {
     getPodcasts();
   }, []);
 
+  const genreFilter = searchParams.get("genre");
 
   if (loading) {
-    return <CircularProgress className="circular-progress"/>;
+    return <CircularProgress className="circular-progress" />;
   }
 
+  const displayedSongs = genreFilter
+    ? shows.filter((show) => show.genres.includes(parseInt(genreFilter)))
+    : shows;
+
   return (
+  <>
+    <GenreFilter />
     <div className="home-page">
       <div className="shows-list">
-        {shows.map((show) => (
+        {displayedSongs.map((show) => (
           <div key={show.id} className="show-card">
             <img
               className="show-image"
@@ -53,6 +62,7 @@ const HomePage = () => {
         ))}
       </div>
     </div>
+  </>
   );
 };
 

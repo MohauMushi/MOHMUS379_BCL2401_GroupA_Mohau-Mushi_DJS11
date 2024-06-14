@@ -9,6 +9,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+}
+main {
+  min-height: 100vh;
+}
+
 a {
   font-weight: 500;
   color: floralwhite;

@@ -1,0 +1,27 @@
+.genre-filter-dropdown {
+	margin: 0 auto;
+	margin-top: 5rem;
+	display: block;
+	text-align: center;
+  }
+  
+  .genre-select {
+	height: 34px;
+	padding: 6px 26px;
+	font-style: normal;
+	font-weight: 700;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	color: #6b6b6b;
+	transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .genre-option{
+	margin-left: 3rem;
+	color: #6b6b6b;
+	font-weight: 700;
+  }
+  
+  .genre-select:focus {
+	outline: none;
+  }
+  
