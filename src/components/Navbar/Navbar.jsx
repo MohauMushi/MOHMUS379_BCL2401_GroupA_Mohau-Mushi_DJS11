@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaHome, FaHeart, FaBars } from "react-icons/fa";
 import "./Navbar.css";
 import Logo from "../../assets/sound.png";
@@ -21,13 +21,13 @@ const Navbar = () => {
         </Link>
   
         <div className={`nav-links ${showMenu ? 'show' : ''}`}>
-          <Link to="/" className="nav-link">
+          <NavLink to="/" className={({isActive}) => isActive ? "active-link" : null}>
             <FaHome /> Home
-          </Link>
+          </NavLink>
   
-          <Link to="/favourites" className="nav-link">
+          <NavLink to="/favourites" className={({isActive}) => isActive ? "active-link" : null}>
             <FaHeart /> Favourites
-          </Link>
+          </NavLink>
         </div>
   
         <div className="menu-icon" onClick={toggleMenu}>
