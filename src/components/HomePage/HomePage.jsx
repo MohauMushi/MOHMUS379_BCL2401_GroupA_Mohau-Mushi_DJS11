@@ -37,6 +37,7 @@ const HomePage = () => {
   <>
     <div className="">
     <GenreFilter />
+    <Search podcastShows={shows} setSearchResults={setSearchResults}/>
     </div>
     
 

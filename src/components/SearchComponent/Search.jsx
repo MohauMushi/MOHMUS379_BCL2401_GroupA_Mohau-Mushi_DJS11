@@ -1,20 +1,16 @@
 import { useState } from "react";
 import Fuse from "fuse.js";
 import "./Search.css";
-import searchLogo from "../../assets/search.png";
 
 // eslint-disable-next-line react/prop-types
 export default function Search({ podcastShows, setSearchResults }) {
   const [query, setQuery] = useState("");
-  const [showSearchBox, setShowSearchBox] = useState(false);
 
-  const toggleSearchBox = () => {
-    setShowSearchBox(!showSearchBox);
-    if (!showSearchBox) {
-      setQuery("");
-    }
-  };
-
+  /**
+   * function to search from podcasts based on the title. Perform a fuzzy match
+   * and the state to the results
+   * @param {String} query
+   */
   const handleSearch = (query) => {
     const fuse = new Fuse(podcastShows, {
       keys: ["title"],
@@ -26,15 +22,15 @@ export default function Search({ podcastShows, setSearchResults }) {
     setSearchResults(results);
   };
 
+  useState(() => {
+    if (query !== "") {
+      handleSearch(query);
+    }
+  }, [query, podcastShows]);
+
   return (
-    <div className="search-container">
-      <img
-        src={searchLogo}
-        alt="Search"
-        className="search-logo"
-        onClick={toggleSearchBox}
-      />
-      {showSearchBox && (
+    <>
+      <div className="search-container">
         <form className="filter-search">
           <input
             type="text"
@@ -44,10 +40,9 @@ export default function Search({ podcastShows, setSearchResults }) {
               handleSearch(e.target.value);
             }}
             placeholder="Search..."
-            autoFocus
           />
         </form>
-      )}
-    </div>
+      </div>
+    </>
   );
 }

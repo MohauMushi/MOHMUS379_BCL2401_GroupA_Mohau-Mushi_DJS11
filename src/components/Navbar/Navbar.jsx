@@ -3,10 +3,9 @@ import { FaHome, FaHeart, FaBars } from "react-icons/fa";
 import "./Navbar.css";
 import Logo from "/favicon/favicon.ico";
 import { useState } from 'react';
-import Search from "../SearchComponent/Search";
 
-// eslint-disable-next-line react/prop-types
-const Navbar = ({ podcastShows, setSearchResults }) => {
+
+const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   
   const toggleMenu = () => {
@@ -29,8 +28,6 @@ const Navbar = ({ podcastShows, setSearchResults }) => {
           <NavLink to="/favourites" className={({isActive}) => isActive ? "active-link" : null}>
             <FaHeart /> Favourites
           </NavLink>
-
-          <Search podcastShows={podcastShows} setSearchResults={setSearchResults} />
         </div>
   
         <div className="menu-icon" onClick={toggleMenu}>
