@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaHome, FaHeart, FaBars } from "react-icons/fa";
 import "./Navbar.css";
-import Logo from "../../assets/sound.png";
+import Logo from "/favicon/favicon.ico";
 import { useState } from 'react';
 
 
