@@ -1,0 +1,39 @@
+.filter-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .filter-options {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+  }
+  
+  .filter-input {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1rem;
+  }
+  
+  .sort-buttons {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 1rem;
+  }
+  
+  .sort-button {
+	padding: 0.5rem 1rem;
+	/* border: 1px solid #ccc; */
+	/* border-radius: 4px; */
+	background-color: #edede9;
+	color: #333;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .sort-button.active {
+	background-color: #ede0d4;
+  }

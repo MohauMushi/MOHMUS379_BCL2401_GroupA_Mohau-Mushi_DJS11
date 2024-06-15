@@ -6,12 +6,15 @@ import { mapGenres } from "../../utils/helperFunctions";
 import { useSearchParams } from "react-router-dom";
 import GenreFilter from "../FilterSong/FilterSongsDropdown";
 import Search from "../SearchComponent/Search";
+import SongFilter from "../SortFilterComponent/SortFilter";
 
 const HomePage = () => {
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
   const [searchResults, setSearchResults] = useState([]);
+  const [filter, setFilter] = useState("");
+  const [sortOrder, setSortOrder] = useState("recent");
 
   useEffect(() => {
     const getPodcasts = async () => {
@@ -29,16 +32,51 @@ const HomePage = () => {
     return <CircularProgress className="circular-progress" />;
   }
 
-  const displayedSongs = genreFilter
-    ? shows.filter((show) => show.genres.includes(parseInt(genreFilter)))
-    : shows;
+  // const displayedSongs = genreFilter
+  //   ? shows.filter((show) => show.genres.includes(parseInt(genreFilter)))
+  //   : shows;
+
+
+  // const handleFilterChange = (value) => {
+  //   setFilter(value);
+  // }
+
+  const handleSortOrderChange = (value) => {
+    setSortOrder(value);
+  }
+
+  const filteredShows = shows.filter((show) => {
+    return(
+      (!genreFilter || show.genres.includes(parseInt(genreFilter))) &&
+      show.title.toLowerCase().includes(filter.toLowerCase())
+    )
+  })
+
+  const sortedShows = filteredShows.sort((a, b) => {
+    if (sortOrder === "recent") {
+      return new Date(b.updated) - new Date(a.updated);
+    } else if(sortOrder === "least-recent"){
+      return new Date(a.updated) - new Date(b.updated);
+    } else if(sortOrder === "a-z"){
+      return a.title.localeCompare(b.title);
+    } else if(sortOrder === "z-a"){
+      return b.title.localeCompare(a.title);
+    }
+    return 0;
+  })
 
   return (
   <>
     <div className="">
-    <GenreFilter />
-    <Search podcastShows={shows} setSearchResults={setSearchResults}/>
+      <GenreFilter />
+      <Search podcastShows={shows} setSearchResults={setSearchResults}/>
+      <SongFilter 
+        // onFilterChange={handleFilterChange}
+        onSortOrderChange={handleSortOrderChange}
+      />
     </div>
+
+
     
 
     <div className="home-page">
@@ -63,7 +101,7 @@ const HomePage = () => {
                   </div>
                 </div>
               ))
-            : displayedSongs.map((show) => (
+            : sortedShows.map((show) => (
                 <div key={show.id} className="show-card">
                   <img
                     className="show-image"
