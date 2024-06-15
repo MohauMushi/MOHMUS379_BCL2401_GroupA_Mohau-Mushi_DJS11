@@ -1,4 +1,4 @@
-footer {
+.footer {
   background-color: #ccd5ae;
   color: whitesmoke;
   height: 74px;
@@ -8,4 +8,5 @@ footer {
   font-weight: 500;
   width: 100%;
   flex-shrink: 0;
+  bottom: 0;
 }
