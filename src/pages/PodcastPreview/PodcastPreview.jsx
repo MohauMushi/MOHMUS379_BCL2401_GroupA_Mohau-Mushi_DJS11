@@ -62,19 +62,29 @@ const PodcastPreview = () => {
               className={`season-button ${
                 selectedSeason?.id === season.id ? "active" : ""
               }`}
-              
             >
               Season {season.season}
             </button>
-            
           ))}
         </div>
         {selectedSeason && (
           <div className="episodes-list">
-            {selectedSeason.episodes.map((episode) => (
+            {selectedSeason.episodes.map((episode, index) => (
+              <>
               <div key={episode.id} className="episode-card">
-                <h4 className="episode-title">{episode.title}</h4>
+                <div className="episode-info">
+                <div className="episode-number">
+                    <span>Episode{episode.episode}</span>
+                  </div>
+                  <div className="episode-title">
+                    <h2>{episode.title}</h2>
+                  </div>
+                  <div className="episode-description">
+                    <h5>{episode.description}</h5>
+                  </div>
+                </div>
               </div>
+              </>
             ))}
           </div>
         )}
