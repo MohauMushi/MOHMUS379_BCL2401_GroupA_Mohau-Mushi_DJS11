@@ -1,0 +1,61 @@
+.show-details {
+	font-family: Arial, sans-serif;
+	padding: 20px;
+	background-color: #f4f4f4;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin: 20px 0;
+  }
+  
+  .show-title {
+	font-size: 24px;
+	margin-bottom: 10px;
+  }
+  
+  .show-description {
+	margin-bottom: 20px;
+  }
+  
+  .season-container {
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	padding: 10px;
+	border-radius: 5px;
+  }
+  
+  .season-details {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+  }
+  
+  .season-image {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	margin-right: 20px;
+	border-radius: 5px;
+  }
+  
+  .season-title {
+	font-size: 18px;
+	margin-bottom: 5px;
+  }
+  
+  .season-episodes {
+	font-style: italic;
+	color: #666;
+  }
+  
+  .episode-card {
+	padding: 10px;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	margin-bottom: 10px;
+  }
+  
+  .episode-title {
+	font-size: 16px;
+	margin-bottom: 5px;
+  }
+  
