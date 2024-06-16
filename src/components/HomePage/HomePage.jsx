@@ -65,73 +65,38 @@ const HomePage = () => {
     return 0;
   })
 
+  const renderShows = (showsToRender) => {
+    return showsToRender.map((show) => (
+      <NavLink key={show.id} to={`/show/${show.id}`} className="preview-card-link">
+        <div className="show-card">
+          <img className="show-image" src={show.image} alt={show.title} title={show.title} />
+          <div className="show-content">
+            <h2 className="show-title">{show.title}</h2>
+            <p className="show-line"></p>
+            <p className="show-seasons">Seasons: {show.seasons}</p>
+            <p className="show-updated">
+              Last Updated: {new Date(show.updated).toLocaleDateString()}
+            </p>
+            <p className="show-genres">{mapGenres(show.genres)}</p>
+          </div>
+        </div>
+      </NavLink>
+    ));
+  };
+  
+  
+
   return (
-  <>
-    <div className="">
-      <GenreFilter />
-      <Search podcastShows={shows} setSearchResults={setSearchResults}/>
-      <SongFilter 
-        // onFilterChange={handleFilterChange}
-        onSortOrderChange={handleSortOrderChange}
-      />
-    </div>
+    <>
+      <div className="">
+        <GenreFilter />
+        <Search podcastShows={shows} setSearchResults={setSearchResults} />
+        <SongFilter onSortOrderChange={handleSortOrderChange} />
+      </div>
 
-
-    
-
-    <div className="home-page">
+      <div className="home-page">
         <div className="shows-list">
-          {searchResults.length > 0
-            ? searchResults.map((show) => (
-              <NavLink 
-              key={show.id}
-              to={`/show/${show.id}`}
-              className="preview-card-link"
-              >
-                <div key={show.id} className="show-card">
-                  <img
-                    className="show-image"
-                    src={show.image}
-                    alt={show.title}
-                    title={show.title}
-                  />
-                  <div className="show-content">
-                    <h2 className="show-title">{show.title}</h2>
-                    <p className="show-line"></p>
-                    <p className="show-seasons">Seasons: {show.seasons}</p>
-                    <p className="show-updated">
-                      Last Updated: {new Date(show.updated).toLocaleDateString()}
-                    </p>
-                    <p className="show-genres">{mapGenres(show.genres)}</p>
-                  </div>
-                </div>
-                </NavLink>
-              ))
-            : sortedShows.map((show) => (
-              <NavLink 
-              key={show.id}
-              to={`/show/${show.id}`}
-              className="preview-card-link"
-              >
-                <div key={show.id} className="show-card">
-                  <img
-                    className="show-image"
-                    src={show.image}
-                    alt={show.title}
-                    title={show.title}
-                  />
-                  <div className="show-content">
-                    <h2 className="show-title">{show.title}</h2>
-                    <p className="show-line"></p>
-                    <p className="show-seasons">Seasons: {show.seasons}</p>
-                    <p className="show-updated">
-                      Last Updated: {new Date(show.updated).toLocaleDateString()}
-                    </p>
-                    <p className="show-genres">{mapGenres(show.genres)}</p>
-                  </div>
-                </div>
-                </NavLink>
-              ))}
+          {searchResults.length > 0 ? renderShows(searchResults) : renderShows(sortedShows)}
         </div>
       </div>
     </>
