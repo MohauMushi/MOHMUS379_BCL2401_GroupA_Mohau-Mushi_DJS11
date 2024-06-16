@@ -3,7 +3,7 @@ import { fetchPodcasts } from "../../api/api";
 import { CircularProgress } from "@material-ui/core";
 import "./HomePage.css";
 import { mapGenres } from "../../utils/helperFunctions";
-import { useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import GenreFilter from "../FilterSong/FilterSongsDropdown";
 import Search from "../SearchComponent/Search";
 import SongFilter from "../SortFilterComponent/SortFilter";
@@ -83,6 +83,11 @@ const HomePage = () => {
         <div className="shows-list">
           {searchResults.length > 0
             ? searchResults.map((show) => (
+              <NavLink 
+              key={show.id}
+              to={`/show/${show.id}`}
+              className="preview-card-link"
+              >
                 <div key={show.id} className="show-card">
                   <img
                     className="show-image"
@@ -100,8 +105,14 @@ const HomePage = () => {
                     <p className="show-genres">{mapGenres(show.genres)}</p>
                   </div>
                 </div>
+                </NavLink>
               ))
             : sortedShows.map((show) => (
+              <NavLink 
+              key={show.id}
+              to={`/show/${show.id}`}
+              className="preview-card-link"
+              >
                 <div key={show.id} className="show-card">
                   <img
                     className="show-image"
@@ -119,6 +130,7 @@ const HomePage = () => {
                     <p className="show-genres">{mapGenres(show.genres)}</p>
                   </div>
                 </div>
+                </NavLink>
               ))}
         </div>
       </div>
