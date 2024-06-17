@@ -1,0 +1,62 @@
+.no_favorite_episode {
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+  top: 50%;
+  left: 20%;
+}
+
+.favorites {
+  max-width: 800px;
+  margin: 0 auto;
+  /* padding: 20px; */
+  margin-top: 5rem;
+}
+
+.favorite-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.favorite-details {
+  flex-grow: 1;
+}
+
+.favorite-details h3 {
+  margin-top: 0;
+}
+
+.favorite-details p {
+  margin-bottom: 10px;
+}
+
+.favorite-details button {
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reset_button {
+  background-color: #ff0000;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.reset_button:hover {
+  background-color: #d20505;
+}

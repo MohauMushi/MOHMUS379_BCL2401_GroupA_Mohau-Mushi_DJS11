@@ -13,9 +13,10 @@ const Favorites = () => {
     setFavorites(storedFavorites);
   }, []);
 
-  const removeFavorite = (episodeId) => {
-    const updatedFavorites = favorites.filter((fav) => fav.id !== episodeId);
-    setFavorites(updatedFavorites);  
+  const removeFavorite = (index) => {
+    const updatedFavorites = [...favorites];
+    updatedFavorites.splice(index, 1);
+    setFavorites(updatedFavorites);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
@@ -26,23 +27,27 @@ const Favorites = () => {
 
   return (
     <div className="favorites">
-      <h2>Favorites</h2>
+      <h1>Favorite Episodes</h1>
       {favorites.length === 0 ? (
-        <p>No favorite episodes yet.</p>
+        <p className='no_favorite_episode'>No favorite episodes added yet.</p>
       ) : (
         <>
           <ul>
-            {favorites.map((fav) => (
-              <li key={fav.id} className="favorite-item">
+            {favorites.map((fav, index) => (
+              <li key={index} className="favorite-item">
+              
                 <div className="favorite-details">
                   <h3>{fav.title}</h3>
                   <p>Episode {fav.episode}</p>
-                  <button onClick={() => removeFavorite(fav.id)}>Remove</button>
+                  <p>{fav.description}</p>
+                  <button onClick={() => removeFavorite(index)}>Remove</button>
                 </div>
               </li>
             ))}
           </ul>
-          <button onClick={resetFavorites}>Reset Favorites</button>
+          <button onClick={resetFavorites} className="reset_button">
+            Reset Favorites
+          </button>
         </>
       )}
     </div>

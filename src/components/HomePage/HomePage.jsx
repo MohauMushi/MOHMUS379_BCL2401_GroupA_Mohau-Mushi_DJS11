@@ -88,7 +88,8 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="">
+    <div className="home_container">
+      <div className="home_top">
         <GenreFilter />
         <Search podcastShows={shows} setSearchResults={setSearchResults} />
         <SongFilter onSortOrderChange={handleSortOrderChange} />
@@ -98,6 +99,7 @@ const HomePage = () => {
         <div className="shows-list">
           {searchResults.length > 0 ? renderShows(searchResults) : renderShows(sortedShows)}
         </div>
+      </div>
       </div>
     </>
   );
