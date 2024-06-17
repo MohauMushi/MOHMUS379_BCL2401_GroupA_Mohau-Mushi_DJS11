@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { fetchShowDetails } from "../../api/api";
 import { CircularProgress } from "@material-ui/core";
 import "./PodcastPreview.css";
-import { addFavorite} from "../../pages/FavoritesPage/Favorites";
+import { addFavorite } from "../../pages/FavoritesPage/Favorites";
 
 const PodcastPreview = () => {
   const { id } = useParams();
@@ -41,11 +41,16 @@ const PodcastPreview = () => {
   };
 
   const addToFavorites = (episode) => {
-    const updatedFavorites = [...favorites, episode];
+    const episodeWithShowInfo = {
+      ...episode,
+      showTitle: show.title,
+      season: selectedSeason.season,
+    };
+    const updatedFavorites = addFavorite(favorites, episodeWithShowInfo);
     setFavorites(updatedFavorites);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setShowPopup(true);
-    setAddedEpisode(episode);
+    setAddedEpisode(episodeWithShowInfo);
   };
 
   if (loading) {

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Favorites.css';
 
 const addFavorite = (favorites, episode) => {
-  return [...favorites, episode];
+  const timestamp = new Date().toISOString();
+  return [...favorites, { ...episode, addedAt: timestamp }];
 };
 
 const Favorites = () => {
@@ -25,6 +26,15 @@ const Favorites = () => {
     localStorage.removeItem('favorites');
   };
 
+  const groupedFavorites = favorites.reduce((acc, fav) => {
+    const key = `${fav.showTitle} - Season ${fav.season}`;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(fav);
+    return acc;
+  }, {});
+
   return (
     <div className="favorites">
       <h1>Favorite Episodes</h1>
@@ -32,19 +42,24 @@ const Favorites = () => {
         <p className='no_favorite_episode'>No favorite episodes added yet.</p>
       ) : (
         <>
-          <ul>
-            {favorites.map((fav, index) => (
-              <li key={index} className="favorite-item">
-              
-                <div className="favorite-details">
-                  <h3>{fav.title}</h3>
-                  <p>Episode {fav.episode}</p>
-                  <p>{fav.description}</p>
-                  <button onClick={() => removeFavorite(index)}>Remove</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+          {Object.keys(groupedFavorites).map((group, index) => (
+            <div key={index} className="favorite-group">
+              <h2>{group}</h2>
+              <ul>
+                {groupedFavorites[group].map((fav, index) => (
+                  <li key={index} className="favorite-item">
+                    <div className="favorite-details">
+                      <h3>{fav.title}</h3>
+                      <p>Episode {fav.episode}</p>
+                      <p>{fav.description}</p>
+                      <p>Added on: {new Date(fav.addedAt).toLocaleString()}</p>
+                      <button onClick={() => removeFavorite(favorites.indexOf(fav))}>Remove</button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
           <button onClick={resetFavorites} className="reset_button">
             Reset Favorites
           </button>
