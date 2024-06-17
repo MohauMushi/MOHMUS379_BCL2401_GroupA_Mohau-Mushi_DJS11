@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
-import Favourites from "./pages/Favourites";
+import Favourites from "./pages/FavoritesPage/Favorites";
 import Layout from "./components/Layout/Layout";
 import PodcastPreview from "./pages/PodcastPreview/PodcastPreview";
 
