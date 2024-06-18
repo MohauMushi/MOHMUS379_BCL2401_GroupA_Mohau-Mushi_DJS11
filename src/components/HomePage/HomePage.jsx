@@ -14,7 +14,7 @@ const HomePage = () => {
   const [searchParams] = useSearchParams();
   const [searchResults, setSearchResults] = useState([]);
   const [filter, setFilter] = useState("");
-  const [sortOrder, setSortOrder] = useState("recent");
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
     const getPodcasts = async () => {
