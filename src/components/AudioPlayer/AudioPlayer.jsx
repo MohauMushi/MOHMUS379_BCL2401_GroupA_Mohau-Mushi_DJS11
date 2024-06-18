@@ -95,7 +95,7 @@ const AudioPlayer = ({ episodeFile, handleClosePlayer }) => {
             {formatTime(currentTime)} / {formatTime(duration)}
           </span>
         </div>
-        <button className="close-button" onClick={handleCloseClick}>
+        <button className="close-button-player" onClick={handleCloseClick}>
           <FaTimes />
         </button>
       </div>
