@@ -4,6 +4,7 @@ import { fetchShowDetails } from "../../api/api";
 import { CircularProgress } from "@material-ui/core";
 import "./PodcastPreview.css";
 import { addFavorite } from "../../pages/FavoritesPage/Favorites";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 const PodcastPreview = () => {
   const { id } = useParams();
@@ -53,6 +54,21 @@ const PodcastPreview = () => {
     setAddedEpisode(episodeWithShowInfo);
   };
 
+  const handleHeartClick = (episode) => {
+    const isFavorite = favorites.some(
+      (favorite) => favorite.title === episode.title
+    );
+    if (isFavorite) {
+      const updatedFavorites = favorites.filter(
+        (favorite) => favorite.title !== episode.title
+      );
+      setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } else {
+      addToFavorites(episode);
+    }
+  };
+
   if (loading) {
     return <CircularProgress className="circular-progress" />;
   }
@@ -70,7 +86,7 @@ const PodcastPreview = () => {
       <Link onClick={handleBack} className="back-button">
         &larr; <span>Back</span>
       </Link>
-        
+
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
@@ -92,8 +108,8 @@ const PodcastPreview = () => {
           />
         </div>
         <p className="show-description">{show.description}</p>
-        <div className="season-selector">
-          {show.seasons.map((season) => (
+        {show.seasons.map((season) => (
+          <div className="season-selector" key={season.id}>
             <button
               key={season.id}
               onClick={() => handleSeasonSelect(season)}
@@ -103,8 +119,8 @@ const PodcastPreview = () => {
             >
               Season {season.season}
             </button>
-          ))}
-        </div>
+          </div>
+        ))}
         {selectedSeason && (
           <div className="episodes-list">
             {selectedSeason.episodes.map((episode) => (
@@ -119,9 +135,16 @@ const PodcastPreview = () => {
                   <div className="episode-description">
                     <h5>{episode.description}</h5>
                   </div>
-                  <button className="add_to_favorites" onClick={() => addToFavorites(episode)} >
-                    Add to Favorites
-                  </button>
+                  <div className="episode_audio_favorites">
+                  <div className="audio_player"></div>
+                  <div className="add_to_favorites" onClick={() => handleHeartClick(episode)}>
+                    {favorites.some((favorite) => favorite.title === episode.title) ? (
+                      <FaHeart />
+                    ) : (
+                      <FaRegHeart />
+                    )}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
