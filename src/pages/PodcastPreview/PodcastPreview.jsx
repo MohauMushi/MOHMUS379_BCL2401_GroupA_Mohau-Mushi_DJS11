@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { fetchShowDetails } from "../../api/api";
 import { CircularProgress } from "@material-ui/core";
 import "./PodcastPreview.css";
 import { addFavorite } from "../../pages/FavoritesPage/Favorites";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 
 const PodcastPreview = () => {
   const { id } = useParams();
@@ -14,6 +15,8 @@ const PodcastPreview = () => {
   const [favorites, setFavorites] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [addedEpisode, setAddedEpisode] = useState(null);
+  const [currentEpisodeFile, setCurrentEpisodeFile] = useState(null);
+  const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +31,7 @@ const PodcastPreview = () => {
   }, [id]);
 
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(storedFavorites);
   }, []);
 
@@ -49,7 +52,7 @@ const PodcastPreview = () => {
     };
     const updatedFavorites = addFavorite(favorites, episodeWithShowInfo);
     setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     setShowPopup(true);
     setAddedEpisode(episodeWithShowInfo);
   };
@@ -63,19 +66,21 @@ const PodcastPreview = () => {
         (favorite) => favorite.title !== episode.title
       );
       setFavorites(updatedFavorites);
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     } else {
       addToFavorites(episode);
     }
   };
 
-  if (loading) {
-    return <CircularProgress className="circular-progress" />;
-  }
+  const handleEpisodePlay = (episodeFile) => {
+    setCurrentEpisodeFile(episodeFile);
+    setIsPlayerOpen(true);
+  };
 
-  if (!show) {
-    return <div className="not-found">Show not found</div>;
-  }
+  const handleClosePlayer = () => {
+    setCurrentEpisodeFile(null);
+    setIsPlayerOpen(false);
+  };
 
   const handleBack = () => {
     navigate(-1);
@@ -90,67 +95,95 @@ const PodcastPreview = () => {
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
-            <span className="close-button" onClick={closePopup}>&times;</span>
+            <span className="close-button" onClick={closePopup}>
+              &times;
+            </span>
             <p>
-              Episode {addedEpisode ? `${addedEpisode.title}` : ''} added to favorites!
+              Episode {addedEpisode ? `${addedEpisode.title}` : ""} added to
+              favorites!
             </p>
           </div>
         </div>
       )}
-      <div className="show-details">
-        <h2 className="show-title">{show.title}</h2>
-        <div className="show-image-container">
-          <img
-            className="show-image"
-            src={show.image}
-            alt={show.title}
-            title={show.title}
-          />
-        </div>
-        <p className="show-description">{show.description}</p>
-        {show.seasons.map((season) => (
-          <div className="season-selector" key={season.id}>
-            <button
-              key={season.id}
-              onClick={() => handleSeasonSelect(season)}
-              className={`season-button ${
-                selectedSeason?.id === season.id ? "active" : ""
-              }`}
-            >
-              Season {season.season}
-            </button>
+
+      {loading ? (
+        <CircularProgress className="circular-progress" />
+      ) : !show ? (
+        <div className="not-found">Show not found</div>
+      ) : (
+        <div className="show-details">
+          <h2 className="show-title">{show.title}</h2>
+          <div className="show-image-container">
+            <img
+              className="show-image"
+              src={show.image}
+              alt={show.title}
+              title={show.title}
+            />
           </div>
-        ))}
-        {selectedSeason && (
-          <div className="episodes-list">
-            {selectedSeason.episodes.map((episode) => (
-              <div key={episode.id} className="episode-card">
-                <div className="episode-info">
-                  <div className="episode-number">
-                    <span>Episode {episode.episode}</span>
-                  </div>
-                  <div className="episode-title">
-                    <h2>{episode.title}</h2>
-                  </div>
-                  <div className="episode-description">
-                    <h5>{episode.description}</h5>
-                  </div>
-                  <div className="episode_audio_favorites">
-                  <div className="audio_player"></div>
-                  <div className="add_to_favorites" onClick={() => handleHeartClick(episode)}>
-                    {favorites.some((favorite) => favorite.title === episode.title) ? (
-                      <FaHeart />
-                    ) : (
-                      <FaRegHeart />
-                    )}
+          <p className="show-description">{show.description}</p>
+          {show.seasons.map((season) => (
+            <div className="season-selector" key={season.id}>
+              <button
+                key={season.id}
+                onClick={() => handleSeasonSelect(season)}
+                className={`season-button ${
+                  selectedSeason?.id === season.id ? "active" : ""
+                }`}
+              >
+                Season {season.season}
+              </button>
+            </div>
+          ))}
+          {selectedSeason && (
+            <div className="episodes-list">
+              {selectedSeason.episodes.map((episode) => (
+                <div key={episode.id} className="episode-card">
+                  <div className="episode-info">
+                    <div className="episode-number">
+                      <span>Episode {episode.episode}</span>
+                    </div>
+                    <div className="episode-title">
+                      <h2>{episode.title}</h2>
+                    </div>
+                    <div className="episode-description">
+                      <h5>{episode.description}</h5>
+                    </div>
+                    <div className="episode_audio_favorites">
+                      <div className="audio_player">
+                        <button
+                          onClick={() => handleEpisodePlay(episode.file)}
+                          className="play-button"
+                        >
+                          Play
+                        </button>
+                      </div>
+                      <div
+                        className="add_to_favorites"
+                        onClick={() => handleHeartClick(episode)}
+                      >
+                        {favorites.some(
+                          (favorite) => favorite.title === episode.title
+                        ) ? (
+                          <FaHeart />
+                        ) : (
+                          <FaRegHeart />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+              ))}
+            </div>
+          )}
+          {isPlayerOpen && (
+            <AudioPlayer
+              episodeFile={currentEpisodeFile}
+              handleClosePlayer={handleClosePlayer}
+            />
+          )}
+        </div>
+      )}
     </>
   );
 };
