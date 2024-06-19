@@ -8,6 +8,8 @@ const addFavorite = (favorites, episode) => {
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
+  const [sortOrder, setSortOrder] = useState('');
+  const [filterText, setFilterText] = useState('');
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -26,7 +28,32 @@ const Favorites = () => {
     localStorage.removeItem('favorites');
   };
 
-  const groupedFavorites = favorites.reduce((acc, fav) => {
+  const handleSortOrderChange = (value) => {
+    setSortOrder(value);
+  };
+
+  const handleFilterChange = (event) => {
+    setFilterText(event.target.value);
+  };
+
+  const sortedFavorites = [...favorites].sort((a, b) => {
+    if (sortOrder === 'recent') {
+      return new Date(b.addedAt) - new Date(a.addedAt);
+    } else if (sortOrder === 'least-recent') {
+      return new Date(a.addedAt) - new Date(b.addedAt);
+    } else if (sortOrder === 'a-z') {
+      return a.title.localeCompare(b.title);
+    } else if (sortOrder === 'z-a') {
+      return b.title.localeCompare(a.title);
+    }
+    return 0;
+  });
+
+  const filteredFavorites = sortedFavorites.filter((fav) =>
+    fav.title.toLowerCase().includes(filterText.toLowerCase())
+  );
+
+  const groupedFavorites = filteredFavorites.reduce((acc, fav) => {
     const key = `${fav.showTitle} - Season ${fav.season}`;
     if (!acc[key]) {
       acc[key] = [];
@@ -38,8 +65,23 @@ const Favorites = () => {
   return (
     <div className="favorites">
       <h1>Favorite Episodes</h1>
-      {favorites.length === 0 ? (
-        <p className='no_favorite_episode'>No favorite episodes added yet.</p>
+      <div className="filters">
+        <input
+          type="text"
+          placeholder="Filter by title"
+          value={filterText}
+          onChange={handleFilterChange}
+        />
+        <select value={sortOrder} onChange={(e) => handleSortOrderChange(e.target.value)}>
+          <option value="">Sort by...</option>
+          <option value="recent">Most recently added</option>
+          <option value="least-recent">Least recently added</option>
+          <option value="a-z">Title (A-Z)</option>
+          <option value="z-a">Title (Z-A)</option>
+        </select>
+      </div>
+      {filteredFavorites.length === 0 ? (
+        <p className="no_favorite_episode">No favorite episodes added yet.</p>
       ) : (
         <>
           {Object.keys(groupedFavorites).map((group, index) => (
