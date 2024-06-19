@@ -1,9 +1,9 @@
 .show-details {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  /* background-color: #f4f4f4; */
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
   margin: 20px 0;
   text-align: center;
 }
@@ -48,39 +48,12 @@
   border-radius: 5px;
 }
 
-.season-selector {
+.form_control{
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 5rem;
 }
 
-.season-button {
-  background-color: #ccd5ae;
-  border: none;
-  color: #333;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.season-button.active {
-  background-color: #e9edc9;
-  color: #333;
-}
-
-.season-button:hover {
-  background-color: #d4dfc0;
-}
-
-.season-button.active:hover {
-  background-color: #e4e8c1;
-}
 
 .episodes-list {
   display: flex;

@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { fetchShowDetails } from "../../api/api";
-import { CircularProgress } from "@material-ui/core";
+import {
+  CircularProgress,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
 import "./PodcastPreview.css";
 import { addFavorite } from "../../pages/FavoritesPage/Favorites";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
@@ -17,6 +23,7 @@ const PodcastPreview = () => {
   const [addedEpisode, setAddedEpisode] = useState(null);
   const [currentEpisodeFile, setCurrentEpisodeFile] = useState(null);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
+  const [showEpisodes, setShowEpisodes] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,7 +31,7 @@ const PodcastPreview = () => {
       setLoading(true);
       const data = await fetchShowDetails(id);
       setShow(data);
-      setSelectedSeason(data.seasons[0]);
+      setSelectedSeason(data.seasons[-1]);
       setLoading(false);
     };
     getShowDetails();
@@ -40,8 +47,12 @@ const PodcastPreview = () => {
     setAddedEpisode(null);
   };
 
-  const handleSeasonSelect = (season) => {
-    setSelectedSeason(season);
+  const handleSeasonSelect = (event) => {
+    const selectedSeason = show.seasons.find(
+      (season) => season === event.target.value
+    );
+    setSelectedSeason(selectedSeason);
+    setShowEpisodes(true);
   };
 
   const addToFavorites = (episode) => {
@@ -122,23 +133,25 @@ const PodcastPreview = () => {
             />
           </div>
           <p className="show-description">{show.description}</p>
-          {show.seasons.map((season) => (
-            <div className="season-selector" key={season.id}>
-              <button
-                key={season.id}
-                onClick={() => handleSeasonSelect(season)}
-                className={`season-button ${
-                  selectedSeason?.id === season.id ? "active" : ""
-                }`}
-              >
-                Season {season.season}
-              </button>
-            </div>
-          ))}
-          {selectedSeason && (
+          <FormControl fullWidth size="medium" className="form_control">
+            <InputLabel id="season-select-label">Season</InputLabel>
+            <Select
+              labelId="season-select-label"
+              value={selectedSeason || ""}
+              onChange={handleSeasonSelect}
+              label="Season"
+            >
+              {show.seasons.map((season) => (
+                <MenuItem key={season.season} value={season}>
+                  Season {season.season}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          {showEpisodes && selectedSeason && (
             <div className="episodes-list">
               {selectedSeason.episodes.map((episode) => (
-                <div key={episode.id} className="episode-card">
+                <div key={episode.episode} className="episode-card">
                   <div className="episode-info">
                     <div className="episode-number">
                       <span>Episode {episode.episode}</span>
