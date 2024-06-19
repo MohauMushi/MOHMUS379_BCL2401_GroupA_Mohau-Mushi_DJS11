@@ -1,134 +1,222 @@
-.show-details {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  /* background-color: #f4f4f4; */
-  /* border: 1px solid #ccc; */
-  /* border-radius: 5px; */
-  margin: 20px 0;
-  text-align: center;
-}
+/* Back Button */
 .back-button {
-  background-color: #4caf50;
+  background-color: transparent;
   border: none;
-  color: white;
-  padding: 15px 32px;
+  color: #6c63ff;
+  padding: 8px 16px;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  /* margin-top: 6rem;
-  margin-left: 0.5rem; */
   cursor: pointer;
-  border-radius: 8px;
-  margin: 0 auto;
-  /* padding: 20px; */
-  margin-top: 5rem;
+  transition: color 0.3s ease-in-out;
+  margin-top: 6rem;
+  margin-left: 2rem;
+}
+
+.back-button span {
+  font-weight: 600;
 }
 
 .back-button:hover {
-  background-color: #45a049;
+  color: #5a51e6;
 }
 
-.show-title {
-  font-size: 24px;
-  margin-bottom: 10px;
+/* Loading Spinner */
+.circular-progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #6c63ff;
 }
 
-.show-description {
-  margin-bottom: 20px;
+/* Not Found */
+.not-found-episode {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Show Details */
+.show-details-episode {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  /* margin: 20px 0; */
+  text-align: center;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.show-title-episode {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.show-description-episode {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
 }
 
 .show-image-container {
-  margin-bottom: 20px;
-  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.show-image {
-  max-width: 300px;
+.show-image-episode {
+  width: 12%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form_control{
+.form_control {
   display: flex;
   justify-content: center;
-  margin: 5rem;
+  max-width: 500px;
+  margin: 2rem 0;
 }
 
-
+/* Episodes List */
 .episodes-list {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
+/* Episode Card */
 .episode-card {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 22%; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  /* transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out; */
+  margin-bottom: 20px;
+}
+
+/* .episode-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+} */
+
+.episode-info {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
   padding: 10px;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 10px;
+}
+
+.episode-number {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 8px;
 }
 
 .episode-title {
-  font-size: 16px;
-  margin-bottom: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
 }
 
 .episode-description {
-  font-size: 0.9rem;
-  font-weight: 100;
+  font-size: 0.8rem;
+  color: #666;
+  /* line-height: 1.5; */
+  margin-bottom: 2px;
 }
+
 .episode_audio_favorites {
-  border: none;
-  color: black;
-  text-decoration: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.add_to_favorites{
+.audio_player {
+  display: flex;
+  align-items: center;
+}
+
+.play-button {
+  background-color: #6c63ff;
+  color: white;
+  padding: 8px 16px;
   border: none;
-  color: black;
-  text-decoration: none;
-  font-size: 20px;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 8px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out;
 }
 
+.play-button:hover {
+  background-color: #5a51e6;
+}
+
+.add_to_favorites {
+  font-size: 1.5rem;
+  color: #ff0000;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
 
 
 /* PopUp */
-
 .popup {
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+  width: 400px;
+  max-width: 90%;
+  position: relative;
 }
 
 .close-button {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #5b5b5b;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 
-.close-button:hover,
-.close-button:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.close-button:hover {
+  color: #333;
+}
+
+.popup-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
 }

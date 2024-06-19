@@ -96,9 +96,7 @@ const HomePage = () => {
       </div>
 
       <div className="home-page">
-        <div className="shows-list">
           {searchResults.length > 0 ? renderShows(searchResults) : renderShows(sortedShows)}
-        </div>
       </div>
       </div>
     </>

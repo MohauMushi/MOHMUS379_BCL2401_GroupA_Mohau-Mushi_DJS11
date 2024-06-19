@@ -120,19 +120,19 @@ const PodcastPreview = () => {
       {loading ? (
         <CircularProgress className="circular-progress" />
       ) : !show ? (
-        <div className="not-found">Show not found</div>
+        <div className="not-found-episode">Show not found</div>
       ) : (
-        <div className="show-details">
-          <h2 className="show-title">{show.title}</h2>
+        <div className="show-details-episode">
+          <h2 className="show-title-episode">{show.title}</h2>
           <div className="show-image-container">
             <img
-              className="show-image"
+              className="show-image-episode"
               src={show.image}
               alt={show.title}
               title={show.title}
             />
           </div>
-          <p className="show-description">{show.description}</p>
+          <p className="show-description-episode">{show.description}</p>
           <FormControl fullWidth size="medium" className="form_control">
             <InputLabel id="season-select-label">Season</InputLabel>
             <Select
