@@ -88,7 +88,7 @@ const AudioPlayer = ({ episodeFile, handleClosePlayer }) => {
             type="range"
             min="0"
             max="100"
-            value={(currentTime / duration) * 100}
+            value={currentTime && duration ? (currentTime / duration) * 100 : 0}
             onChange={handleSeek}
           />
           <span className="time-display">
