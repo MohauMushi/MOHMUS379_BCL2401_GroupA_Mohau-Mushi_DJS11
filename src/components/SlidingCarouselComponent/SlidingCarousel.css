@@ -1,0 +1,138 @@
+.show-carousel {
+  margin-top: 3rem;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.heading-container {
+  text-align: center;
+}
+
+.greeting-heading {
+  text-align: center;
+  font-style: italic;
+  color: #77948c;
+  /* margin-bottom: 3rem; */
+  position: relative;
+  display: inline-block;
+  /* padding: 10px 20px; */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.greeting-heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(119, 148, 140, 0.1);
+  filter: blur(10px);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.greeting-heading:hover {
+  color: #5a7267;
+  text-shadow: 0 0 10px rgba(119, 148, 140, 0.5);
+}
+
+.greeting-heading:hover::before {
+  background-color: rgba(119, 148, 140, 0.2);
+  filter: blur(20px);
+}
+
+.recommend{
+	text-align: center;
+}
+
+.carousel-container {
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex: 0 0 33.333%;
+  padding: 0 10px;
+}
+
+.show-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.show-card:hover {
+  transform: translate(-10px);
+}
+
+.card-img {
+  width: 40%;
+  height: auto;
+  border-radius: 2rem;
+  object-fit: cover;
+}
+
+.card-content {
+  /* padding: 15px; */
+}
+
+.card-content h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.card-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-control:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    flex: 0 0 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-item {
+    flex: 0 0 100%;
+  }
+}
