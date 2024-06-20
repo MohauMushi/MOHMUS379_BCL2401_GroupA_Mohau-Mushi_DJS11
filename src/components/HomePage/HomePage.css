@@ -1,102 +1,95 @@
 .home-page {
-  margin-top: 5rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
 }
-.home_container{
+
+.home_container {
   margin-top: 6rem;
 }
-.home_top{
+.home_top {
   margin: 2rem 8rem;
   border: 1px solid #888;
   padding: 1rem;
   border-radius: 1rem;
 }
 
+.preview-card-link {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
 .show-card {
-  margin: 4px;
-  display: flex;
-  flex-direction:column;
-  border: 1px solid #ddd;
-  border-radius: 1.8rem;
-  overflow: hidden;
-  width: 18rem;
-  height: 33rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  text-align: center;
   background-color: #fff;
+  text-align: center;
+  border-radius: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   transition: transform 0.5s ease-in-out;
 }
 
 .show-card:hover {
   transform: scale(1.09);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .show-image {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 1.8rem 1.8rem 0 0;
 }
 
-.show-details {
-  padding: 1rem;
+.show-content {
+  padding: 16px;
 }
 
 .show-title {
-  margin-top: 0.2rem;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 800;
 }
 
 .show-line {
-  border-top: 1px solid #888;
-  margin: 0.5rem 0;
+  height: 1px;
+  background-color: #ddd;
+  margin-bottom: 8px;
 }
 
 .show-seasons,
-.show-updated,
-.show-genres {
-  font-size: 0.9rem;
-  color: #888;
+.show-updated{
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
 }
 
-.show-genres {
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #404040;
-}
-
-/* Read More Button */
-.read-more-btn {
-  background-color: transparent;
-  border: none;
-  color: blue;
-  cursor: pointer;
-  font-size: 0.9rem;
-  margin-left: 5px;
-}
-
-.read-more-btn:hover {
-  text-decoration: underline;
+.show-genres{
+  color: #242222;
+  font-weight: 700;
 }
 
 .circular-progress {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 
-@media (max-width: 768px) {
-  .shows-list {
-    justify-content: center;
+@media (min-width: 768px) {
+  .preview-card-link {
+    width: calc(50% - 20px);
   }
+}
 
-  .show-card {
-    width: 80%;
-    max-width: 400px;
+@media (min-width: 1024px) {
+  .preview-card-link {
+    width: calc(33.33% - 20px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .preview-card-link {
+    width: calc(25% - 20px);
   }
 }
