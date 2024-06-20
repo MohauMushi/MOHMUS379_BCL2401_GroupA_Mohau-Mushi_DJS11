@@ -1,5 +1,5 @@
 .show-carousel {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   max-width: 100%;
   overflow: hidden;
   position: relative;
@@ -45,8 +45,8 @@
   filter: blur(20px);
 }
 
-.recommend{
-	text-align: center;
+.recommend {
+  text-align: center;
 }
 
 .carousel-container {
@@ -63,15 +63,16 @@
   padding: 0 10px;
 }
 
-.show-card {
+.carousel-show-card {
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
 }
 
-.show-card:hover {
+.carousel-show-card:hover {
   transform: translate(-10px);
 }
 

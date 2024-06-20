@@ -30,11 +30,11 @@ const ShowCarousel = ({ shows }) => {
         <div className="carousel-inner">
           {shows.slice(activeIndex * 3, activeIndex * 3 + 3).map((show) => (
             <div key={show.id} className="carousel-item">
-              <div className="show-card">
+              <div className="carousel-show-card">
                 <img className="card-img" src={show.image} alt={show.title} />
                 <div className="card-content">
                   <h3>{show.title}</h3>
-                  <p>Season: {show.seasons}</p>
+                  <p>Seasons: {show.seasons}</p>
                 </div>
               </div>
             </div>
