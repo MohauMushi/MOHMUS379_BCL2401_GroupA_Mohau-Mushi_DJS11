@@ -11,6 +11,7 @@ import {
 import "./PodcastPreview.css";
 import { addFavorite } from "../../pages/FavoritesPage/Favorites";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { BsMusicPlayer } from "react-icons/bs";
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 
 const PodcastPreview = () => {
@@ -164,12 +165,12 @@ const PodcastPreview = () => {
                     </div>
                     <div className="episode_audio_favorites">
                       <div className="audio_player">
-                        <button
+                        <div
                           onClick={() => handleEpisodePlay(episode.file)}
                           className="play-button"
                         >
-                          Play
-                        </button>
+                          <BsMusicPlayer className="music-player"/>
+                        </div>
                       </div>
                       <div
                         className="add_to_favorites"
@@ -191,6 +192,7 @@ const PodcastPreview = () => {
           )}
           {isPlayerOpen && (
             <AudioPlayer
+
               episodeFile={currentEpisodeFile}
               handleClosePlayer={handleClosePlayer}
             />

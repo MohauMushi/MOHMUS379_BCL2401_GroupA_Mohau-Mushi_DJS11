@@ -160,13 +160,17 @@
   align-items: center;
   width: 100%;
 }
-
-.audio_player {
-  display: flex;
-  align-items: center;
+.music-player{
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
-.play-button {
+/* .audio_player {
+  display: flex;
+  align-items: center;
+} */
+
+/* .play-button {
   background-color: #6c63ff;
   color: white;
   padding: 8px 16px;
@@ -179,7 +183,7 @@
 
 .play-button:hover {
   background-color: #5a51e6;
-}
+} */
 
 .add_to_favorites {
   font-size: 1.5rem;
