@@ -16,15 +16,14 @@
 }
 
 .show-card {
-  
-  margin: 5px;
-  /* padding: 16px; */
+  margin: 4px;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   border: 1px solid #ddd;
   border-radius: 1.8rem;
   overflow: hidden;
-  width: 300px;
+  width: 18rem;
+  height: 33rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
   background-color: #fff;
@@ -32,48 +31,43 @@
 }
 
 .show-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.09);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .show-image {
-	/* height: auto; */
-	/* border-radius: 0.2rem; */
-	/* flex-shrink: 0; */
-	/* display: block; */
-	/* margin: 0 auto; */
   width: 100%;
   height: auto;
   object-fit: cover;
-  }
+  border-radius: 1.8rem 1.8rem 0 0;
+}
 
-.show-content {
-  padding: 16px;
+.show-details {
+  padding: 1rem;
 }
 
 .show-title {
-  margin-top: 0;
+  margin-top: 0.2rem;
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.show-line{
+.show-line {
   border-top: 1px solid #888;
-}
-
-.show-description {
-  font-size: 0.9rem;
-  color: #666;
+  margin: 0.5rem 0;
 }
 
 .show-seasons,
-.show-updated {
-  font-size: 0.8rem;
+.show-updated,
+.show-genres {
+  font-size: 0.9rem;
   color: #888;
 }
 
-.show-genres{
+.show-genres {
   font-weight: bold;
-  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #404040;
 }
 
 /* Read More Button */
