@@ -7,6 +7,7 @@ import { NavLink, useSearchParams } from "react-router-dom";
 import GenreFilter from "../FilterSong/FilterSongsDropdown";
 import Search from "../SearchComponent/Search";
 import SongFilter from "../SortFilterComponent/SortFilter";
+import ShowCarousel from "../SlidingCarouselComponent/SlidingCarousel";
 
 const HomePage = () => {
   const [shows, setShows] = useState([]);
@@ -89,6 +90,7 @@ const HomePage = () => {
   return (
     <>
     <div className="home_container">
+    <ShowCarousel shows={shows} />
       <div className="home_top">
         <GenreFilter />
         <Search podcastShows={shows} setSearchResults={setSearchResults} />
