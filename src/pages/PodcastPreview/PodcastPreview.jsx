@@ -157,6 +157,12 @@ const PodcastPreview = () => {
                     <div className="episode-number">
                       <span>Episode {episode.episode}</span>
                     </div>
+                    <div className="episode-img">
+                      <img
+                        src={selectedSeason.image}
+                        alt={`Season ${selectedSeason.season}`}
+                      />
+                    </div>
                     <div className="episode-title">
                       <h2>{episode.title}</h2>
                     </div>
@@ -169,7 +175,7 @@ const PodcastPreview = () => {
                           onClick={() => handleEpisodePlay(episode.file)}
                           className="play-button"
                         >
-                          <BsMusicPlayer className="music-player"/>
+                          <BsMusicPlayer className="music-player" />
                         </div>
                       </div>
                       <div
@@ -192,7 +198,6 @@ const PodcastPreview = () => {
           )}
           {isPlayerOpen && (
             <AudioPlayer
-
               episodeFile={currentEpisodeFile}
               handleClosePlayer={handleClosePlayer}
             />
