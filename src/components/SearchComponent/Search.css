@@ -2,11 +2,12 @@
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  margin-bottom: 1rem;
 }
 
 .filter-search input {
-  padding: 10px;
-  width: 300px;
+  /* padding: 5px; */
+  width: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
@@ -14,24 +15,37 @@
 
 .filter-search > label {
   font-weight: 400;
-  margin-right: 0.5rem;
+  /* margin-right: 0.5rem; */
 }
+
 .filter-search input {
   background-color: transparent;
   border: 1px solid #003eab;
+  height: 0.5rem;
+  width: 250px;
   height: 2rem;
 }
 
-@media only screen and (max-width: 425px) {
-  .filter-search {
-    margin-left: 0;
-  }
+/* @media (max-width: 425px) {
   .filter-search input {
+    width: 100%;
     height: 1.5rem;
+    font-size: 0.8rem;
   }
-}
-@media only screen and (min-width: 768px) {
+} */
+
+/* @media (min-width: 426px) and (max-width: 767px) {
   .filter-search input {
-    width: 13rem;
+    width: 250px;
+    height: 2rem;
+    font-size: 1rem;
   }
-}
+} */
+
+/* @media (min-width: 768px) and (max-width: 1023px) {
+  .filter-search input {
+    width: 250px;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+} */
