@@ -1,5 +1,5 @@
 .navbar {
-	background-color: #ccd5ae;
+	background-color: #97917B;
 	padding: 1rem;
 	position: fixed;
 	top: 0;
@@ -74,10 +74,11 @@
 	  flex-direction: column;
 	  position: absolute;
 	  top: 100%;
-	  left: 0;
-	  right: 0;
-	  background-color: #81a064;
-	  padding: 1rem;
+	  left: 2rem;
+	  right: 2rem;
+	  border-radius: 0 0 3rem 3rem;
+	  background-color: #97917B;
+	  padding: 2rem;
 	}
   
 	.nav-link {

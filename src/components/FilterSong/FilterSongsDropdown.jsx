@@ -11,7 +11,7 @@ const GenreFilter = () => {
 
   return (
     <div className="genre-filter-dropdown">
-      <select onChange={handleFilterChange} className="genre-select">
+      <select onChange={handleFilterChange} className="genre-select custom-select">
         <option value="" className="genre-option">All Genres</option>
         <option value="1" className="genre-option">Personal Growth</option>
         <option value="2" className="genre-option">Investigative Journalism</option>

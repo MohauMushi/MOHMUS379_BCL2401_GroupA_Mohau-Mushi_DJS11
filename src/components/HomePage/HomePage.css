@@ -8,10 +8,10 @@
   margin-top: 6rem;
 }
 .home_top {
-  margin: 2rem 8rem;
-  border: 1px solid #888;
+  /* margin: 2rem 8rem; */
+  border: 1px #888;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 5rem;
 }
 
 .preview-card-link {
