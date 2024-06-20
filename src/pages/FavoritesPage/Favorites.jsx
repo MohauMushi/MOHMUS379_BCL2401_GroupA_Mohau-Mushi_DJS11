@@ -71,8 +71,9 @@ const Favorites = () => {
           placeholder="Filter by title"
           value={filterText}
           onChange={handleFilterChange}
+          className='favorites-input'
         />
-        <select value={sortOrder} onChange={(e) => handleSortOrderChange(e.target.value)}>
+        <select value={sortOrder} className='favorites-select' onChange={(e) => handleSortOrderChange(e.target.value)}>
           <option value="">Sort by...</option>
           <option value="recent">Most recently added</option>
           <option value="least-recent">Least recently added</option>
@@ -87,9 +88,9 @@ const Favorites = () => {
           {Object.keys(groupedFavorites).map((group, index) => (
             <div key={index} className="favorite-group">
               <h2>{group}</h2>
-              <ul>
+              <div className="favorite-flex-container">
                 {groupedFavorites[group].map((fav, index) => (
-                  <li key={index} className="favorite-item">
+                  <div key={index} className="favorite-item">
                     <div className="favorite-details">
                       <h3>{fav.title}</h3>
                       <p>Episode {fav.episode}</p>
@@ -97,9 +98,9 @@ const Favorites = () => {
                       <p>Added on: {new Date(fav.addedAt).toLocaleString()}</p>
                       <button onClick={() => removeFavorite(favorites.indexOf(fav))}>Remove</button>
                     </div>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
           <button onClick={resetFavorites} className="reset_button">
