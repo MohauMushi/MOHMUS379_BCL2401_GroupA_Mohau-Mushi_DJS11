@@ -12,7 +12,7 @@ import "./PodcastPreview.css";
 import { addFavorite } from "../../pages/FavoritesPage/Favorites";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { BsMusicPlayer } from "react-icons/bs";
-import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
+import { useAudioPlayer } from "../../components/AudioPlayer/AudioPlayerContext"; 
 
 const PodcastPreview = () => {
   const { id } = useParams();
@@ -22,17 +22,16 @@ const PodcastPreview = () => {
   const [favorites, setFavorites] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [addedEpisode, setAddedEpisode] = useState(null);
-  const [currentEpisodeFile, setCurrentEpisodeFile] = useState(null);
-  const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const [showEpisodes, setShowEpisodes] = useState(false);
   const navigate = useNavigate();
+  const { openPlayer } = useAudioPlayer(); 
 
   useEffect(() => {
     const getShowDetails = async () => {
       setLoading(true);
       const data = await fetchShowDetails(id);
       setShow(data);
-      setSelectedSeason(data.seasons[-1]);
+      setSelectedSeason(data.seasons[0]);
       setLoading(false);
     };
     getShowDetails();
@@ -49,9 +48,7 @@ const PodcastPreview = () => {
   };
 
   const handleSeasonSelect = (event) => {
-    const selectedSeason = show.seasons.find(
-      (season) => season === event.target.value
-    );
+    const selectedSeason = event.target.value;
     setSelectedSeason(selectedSeason);
     setShowEpisodes(true);
   };
@@ -85,13 +82,7 @@ const PodcastPreview = () => {
   };
 
   const handleEpisodePlay = (episodeFile) => {
-    setCurrentEpisodeFile(episodeFile);
-    setIsPlayerOpen(true);
-  };
-
-  const handleClosePlayer = () => {
-    setCurrentEpisodeFile(null);
-    setIsPlayerOpen(false);
+    openPlayer(episodeFile);
   };
 
   const handleBack = () => {
@@ -195,12 +186,6 @@ const PodcastPreview = () => {
                 </div>
               ))}
             </div>
-          )}
-          {isPlayerOpen && (
-            <AudioPlayer
-              episodeFile={currentEpisodeFile}
-              handleClosePlayer={handleClosePlayer}
-            />
           )}
         </div>
       )}
