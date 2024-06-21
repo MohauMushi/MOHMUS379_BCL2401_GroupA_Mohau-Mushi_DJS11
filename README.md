@@ -1,4 +1,4 @@
-# 🎵 Podcast App | Portfolio Piece
+# 🎵 PodStream Web App | Portfolio Piece
 
 ## Introduction
 
