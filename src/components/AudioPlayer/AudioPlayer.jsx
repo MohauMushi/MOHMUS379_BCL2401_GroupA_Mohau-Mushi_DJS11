@@ -8,7 +8,6 @@ const AudioPlayer = ({ episodeFile, handleClosePlayer }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [showCloseConfirmation, setShowCloseConfirmation] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -18,11 +17,6 @@ const AudioPlayer = ({ episodeFile, handleClosePlayer }) => {
       setDuration(audio.duration);
     };
 
-    const handleEnded = () => {
-      setIsFinished(true);
-      localStorage.setItem(episodeFile, 'finished');
-    };
-
     const audioEvents = {
       canplay: () => {
         setDuration(audio.duration);
@@ -30,24 +24,18 @@ const AudioPlayer = ({ episodeFile, handleClosePlayer }) => {
       timeupdate: () => {
         setAudioData();
       },
-      ended: handleEnded,
     };
 
     Object.entries(audioEvents).forEach(([event, handler]) => {
       audio.addEventListener(event, handler);
     });
 
-    // Check if the episode was finished before
-    if (localStorage.getItem(episodeFile) === 'finished') {
-      setIsFinished(true);
-    }
-
     return () => {
       Object.entries(audioEvents).forEach(([event, handler]) => {
         audio.removeEventListener(event, handler);
       });
     };
-  }, [episodeFile]);
+  }, []);
 
   const togglePlayPause = () => {
     const audio = audioRef.current;
@@ -90,29 +78,34 @@ const AudioPlayer = ({ episodeFile, handleClosePlayer }) => {
 
   return (
     <div className="audio-player">
-      <audio ref={audioRef} src={episodeFile} />
-      <button onClick={togglePlayPause}>
-        {isPlaying ? <FaStop /> : <FaPlay />}
-      </button>
-      <div>
-        {formatTime(currentTime)} / {formatTime(duration)}
+      <audio ref={audioRef} src={episodeFile} preload="metadata" />
+      <div className="controls">
+        <button className="play-pause" onClick={togglePlayPause}>
+          {isPlaying ? <FaStop /> : <FaPlay />}
+        </button>
+        <div className="progress-bar">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={currentTime && duration ? (currentTime / duration) * 100 : 0}
+            onChange={handleSeek}
+          />
+          <span className="time-display">
+            {formatTime(currentTime)} / {formatTime(duration)}
+          </span>
+        </div>
+        <button className="close-button-player" onClick={handleCloseClick}>
+          <FaTimes />
+        </button>
       </div>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={(currentTime / duration) * 100 || 0}
-        onChange={handleSeek}
-      />
-      {isFinished && <div>Episode finished</div>}
-      <button onClick={handleCloseClick}>
-        <FaTimes />
-      </button>
       {showCloseConfirmation && (
         <div className="close-confirmation">
           <p>Are you sure you want to stop playing audio?</p>
-          <button onClick={() => handleCloseConfirmation(true)}>Yes</button>
-          <button onClick={() => handleCloseConfirmation(false)}>No</button>
+          <div>
+            <button onClick={() => handleCloseConfirmation(true)}>Yes</button>
+            <button onClick={() => handleCloseConfirmation(false)}>No</button>
+          </div>
         </div>
       )}
     </div>
