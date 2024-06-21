@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Favorites.css';
+import { CircularProgress, Backdrop } from '@mui/material';
 
 const addFavorite = (favorites, episode) => {
   const timestamp = new Date().toISOString();
@@ -10,22 +11,52 @@ const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
   const [sortOrder, setSortOrder] = useState('');
   const [filterText, setFilterText] = useState('');
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [isNewDataLoading, setIsNewDataLoading] = useState(false);
 
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavorites(storedFavorites);
+    const fetchFavorites = async () => {
+      setIsInitialLoading(true);
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        setFavorites(storedFavorites);
+      } catch (error) {
+        console.error('Error fetching favorites:', error);
+      } finally {
+        setIsInitialLoading(false);
+      }
+    };
+
+    fetchFavorites();
   }, []);
 
-  const removeFavorite = (index) => {
-    const updatedFavorites = [...favorites];
-    updatedFavorites.splice(index, 1);
-    setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  const removeFavorite = async (index) => {
+    setIsNewDataLoading(true);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      const updatedFavorites = [...favorites];
+      updatedFavorites.splice(index, 1);
+      setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } catch (error) {
+      console.error('Error removing favorite:', error);
+    } finally {
+      setIsNewDataLoading(false);
+    }
   };
 
-  const resetFavorites = () => {
-    setFavorites([]);
-    localStorage.removeItem('favorites');
+  const resetFavorites = async () => {
+    setIsNewDataLoading(true);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      setFavorites([]);
+      localStorage.removeItem('favorites');
+    } catch (error) {
+      console.error('Error resetting favorites:', error);
+    } finally {
+      setIsNewDataLoading(false);
+    }
   };
 
   const handleSortOrderChange = (value) => {
@@ -61,6 +92,14 @@ const Favorites = () => {
     acc[key].push(fav);
     return acc;
   }, {});
+
+  if (isInitialLoading) {
+    return (
+      <div className="favorites-loading">
+        <CircularProgress />
+      </div>
+    );
+  }
 
   return (
     <div className="favorites">
@@ -108,6 +147,12 @@ const Favorites = () => {
           </button>
         </>
       )}
+      <Backdrop
+        sx={{ color: '#0000', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={isNewDataLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </div>
   );
 };

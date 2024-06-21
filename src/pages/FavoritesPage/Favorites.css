@@ -161,6 +161,12 @@ h1 {
   background-color: #2980b9;
 }
 
+.favorites-loading{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 1200px) {
   .favorite-item {
