@@ -12,12 +12,6 @@ Key features include:
 - Filter shows by genre
 - Responsive design for all devices
 
-## 🌐 Live Demo
-
-Experience the PodStream Web App in action! Visit our live demo hosted on Netlify:
-
-[PodStream Web App](https://podstream-portfolio-piece.netlify.app/)
-
 Feel free to explore the features, browse podcasts, and test the functionality of the app.
 
 ## 🚀 Getting Started
@@ -87,16 +81,24 @@ Feel free to explore the features, browse podcasts, and test the functionality o
 ### Deployment
 - Netlify
 
+## 🌐 Live PodStream Web App
+
+Experience the PodStream Web App in action! Visit our live demo hosted on Netlify:
+
+[PodStream Web App](https://podstream-portfolio-piece.netlify.app/)
+
 ## 📸 Screenshots
 
-![Home Page]()
 *Caption: The home page of PodStream, showcasing the list of available podcasts.*
+![Home Page](https://github.com/MohauMushi/MOHMUS379_BCL2401_GroupA_Mohau-Mushi_DJS11/assets/156682852/6c795189-169a-40a8-bf24-c9472778cb5e)
+![Home Page](https://github.com/MohauMushi/MOHMUS379_BCL2401_GroupA_Mohau-Mushi_DJS11/assets/156682852/77cb73bb-8a8a-4eb4-a04f-018f5db1abd4)
 
-![Player Interface]()
+
 *Caption: The podcast player interface with playback controls.*
+![Player Interface](https://github.com/MohauMushi/MOHMUS379_BCL2401_GroupA_Mohau-Mushi_DJS11/assets/156682852/0d8a6b47-cd45-49f4-8d94-0a76b87036db)
 
-![Favorites Page]()
 *Caption: The favorites page where users can manage their liked episodes.*
+![Favorites Page](https://github.com/MohauMushi/MOHMUS379_BCL2401_GroupA_Mohau-Mushi_DJS11/assets/156682852/c96f08fc-b539-4c2c-9e68-9d5782f4be58)
 
 ## 🌟 Features
 
@@ -125,7 +127,3 @@ For any questions or feedback regarding this project, please reach out:
 - Email: `david1mushi1@gmail.com`
 - LinkedIn: [Mohau Mushi](https://www.linkedin.com/in/mohau-mushi/)
 - GitHub: [MohauMushi](https://github.com/MohauMushi)
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
