@@ -12,6 +12,14 @@ Key features include:
 - Filter shows by genre
 - Responsive design for all devices
 
+## 🌐 Live Demo
+
+Experience the PodStream Web App in action! Visit our live demo hosted on Netlify:
+
+[PodStream Web App](https://podstream-portfolio-piece.netlify.app/)
+
+Feel free to explore the features, browse podcasts, and test the functionality of the app.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -28,7 +36,7 @@ Key features include:
 
 2. Navigate to the project directory:
    ```
-   cd ...
+   cd MOHMUS379_BCL2401_GroupA_Mohau-Mushi_DJS11
    ```
 
 3. Install dependencies:
@@ -54,8 +62,9 @@ Key features include:
 ### Listening to Episodes
 
 1. Select a show and choose a season.
-2. Click on an episode  to start playing.
-3. Use the persistent audio player at the bottom of the screen to control playback.
+2. Click on an episode play button to start playing.
+3. Added an episode to the Favorite, by pressing the heart icon
+4. Use the persistent audio player at the bottom of the screen to control playback.
 
 ### Managing Favorites
 
@@ -78,14 +87,44 @@ Key features include:
 ### Deployment
 - Netlify
 
+## 📸 Screenshots
+
+![Home Page]()
+*Caption: The home page of PodStream, showcasing the list of available podcasts.*
+
+![Player Interface]()
+*Caption: The podcast player interface with playback controls.*
+
+![Favorites Page]()
+*Caption: The favorites page where users can manage their liked episodes.*
+
+## 🌟 Features
+
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Intuitive Navigation**: Easy-to-use interface for seamless podcast discovery.
+- **Advanced Search**: Quickly find podcasts using the search functionality.
+- **Favorites Management**: Keep track of your favorite episodes.
+- **Playback Control**: Pause, resume, skip.
+
+## 🔜 Future Enhancements
+
+- User accounts and profiles
+- Social sharing features
+- Offline listening capability
+- Integration with popular podcast directories
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
 ## 📞 Contact Information
 
 For any questions or feedback regarding this project, please reach out:
 
-- Developer: ***MOHAU MUSHI*** 
+- Developer: **MOHAU MUSHI** 
 - Email: `david1mushi1@gmail.com`
-- LinkedIn: `https://www.linkedin.com/in/mohau-mushi/`
-- GitHub: `https://github.com/MohauMushi`
+- LinkedIn: [Mohau Mushi](https://www.linkedin.com/in/mohau-mushi/)
+- GitHub: [MohauMushi](https://github.com/MohauMushi)
 
 ## 📄 License
 
