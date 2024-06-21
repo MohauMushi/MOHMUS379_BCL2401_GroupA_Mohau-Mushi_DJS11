@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchPodcasts } from "../../api/api";
-import { CircularProgress } from '@mui/material';
+import { CircularProgress } from "@mui/material";
 import "./HomePage.css";
 import { mapGenres } from "../../utils/helperFunctions";
 import { NavLink, useSearchParams } from "react-router-dom";

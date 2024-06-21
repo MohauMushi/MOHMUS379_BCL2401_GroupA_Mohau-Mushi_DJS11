@@ -1,88 +1,87 @@
 .navbar {
-	background-color: #97917B;
-	padding: 1rem;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	z-index: 1;
-  }
-  
-  .logo {
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-	color: white;
-  }
-  
-  .logo-image {
-	width: 45px;
-	height: 45px;
-	margin-right: 0.5rem;
-  }
-  
-  .logo-name {
-	font-size: 1.2rem;
-	font-weight: bold;
-  }
-  
+  background-color: #97917b;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.logo-image {
+  width: 45px;
+  height: 45px;
+  margin-right: 0.5rem;
+}
+
+.logo-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  margin-right: 3rem;
+  align-items: center;
+  gap: 2rem;
+}
+
+.active-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
+a.active-link {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.nav-link svg {
+  margin-right: 0.5rem;
+}
+
+.menu-icon {
+  display: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
   .nav-links {
-	display: flex;
-	margin-right: 3rem;
-	align-items: center;
-	gap: 2rem;
-  }
-  
-  .active-link {
-	color: white;
-	text-decoration: none;
-	font-size: 1.2rem;
-	margin-left: 1rem;
-	font-weight: bold;
+    display: none;
   }
 
-  a.active-link {
-    font-weight: bold;
-    text-decoration: underline;
-}
-  
-  .nav-link svg {
-	margin-right: 0.5rem;
-  }
-  
   .menu-icon {
-	display: none;
-	color: white;
-	font-size: 1.5rem;
-	cursor: pointer;
+    display: block;
+    margin-right: 3rem;
   }
-  
-  @media (max-width: 768px) {
-	.nav-links {
-	  display: none;
-	}
-  
-	.menu-icon {
-	  display: block;
-	  margin-right: 3rem;
-	}
-  
-	.nav-links.show {
-	  display: flex;
-	  flex-direction: column;
-	  position: absolute;
-	  top: 100%;
-	  left: 2rem;
-	  right: 2rem;
-	  border-radius: 0 0 3rem 3rem;
-	  background-color: #97917B;
-	  padding: 2rem;
-	}
-  
-	.nav-link {
-	  margin: 0.5rem 0;
-	}
+
+  .nav-links.show {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 2rem;
+    right: 2rem;
+    border-radius: 0 0 3rem 3rem;
+    background-color: #97917b;
+    padding: 2rem;
   }
-  
+
+  .nav-link {
+    margin: 0.5rem 0;
+  }
+}

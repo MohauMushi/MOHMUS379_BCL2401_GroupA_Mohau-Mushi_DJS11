@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
-import { AudioPlayerProvider, useAudioPlayer } from '../AudioPlayer/AudioPlayerContext';
+import {
+  AudioPlayerProvider,
+  useAudioPlayer,
+} from "../AudioPlayer/AudioPlayerContext";
 
 const LayoutContent = () => {
   const { isPlayerOpen, currentEpisodeFile, closePlayer } = useAudioPlayer();

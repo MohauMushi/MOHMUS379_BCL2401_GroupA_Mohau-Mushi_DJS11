@@ -12,7 +12,7 @@ import "./PodcastPreview.css";
 import { addFavorite } from "../../pages/FavoritesPage/Favorites";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { BsMusicPlayer } from "react-icons/bs";
-import { useAudioPlayer } from "../../components/AudioPlayer/AudioPlayerContext"; 
+import { useAudioPlayer } from "../../components/AudioPlayer/AudioPlayerContext";
 
 const PodcastPreview = () => {
   const { id } = useParams();
@@ -24,7 +24,7 @@ const PodcastPreview = () => {
   const [addedEpisode, setAddedEpisode] = useState(null);
   const [showEpisodes, setShowEpisodes] = useState(false);
   const navigate = useNavigate();
-  const { openPlayer } = useAudioPlayer(); 
+  const { openPlayer } = useAudioPlayer();
 
   useEffect(() => {
     const getShowDetails = async () => {

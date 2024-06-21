@@ -26,7 +26,7 @@ const ShowCarousel = ({ shows }) => {
       </div>
 
       <div className="show-carousel">
-      <h2 className="recommend">Recommended for you...</h2>
+        <h2 className="recommend">Recommended for you...</h2>
         <div className="carousel-inner">
           {shows.slice(activeIndex * 3, activeIndex * 3 + 3).map((show) => (
             <div key={show.id} className="carousel-item">

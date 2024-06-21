@@ -1,58 +1,58 @@
 .genre-filter-dropdown {
-	margin: 0 auto;
-	display: block;
-	text-align: center;
-  }
-  
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.genre-select {
+  height: 34px;
+  padding: 6px 26px;
+  font-style: normal;
+  font-weight: 700;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #6b6b6b;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.genre-option {
+  margin-left: 0;
+  color: #6b6b6b;
+  font-weight: 700;
+}
+
+.genre-select:focus {
+  outline: none;
+}
+
+@media (max-width: 425px) {
   .genre-select {
-	height: 34px;
-	padding: 6px 26px;
-	font-style: normal;
-	font-weight: 700;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	color: #6b6b6b;
-	transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+    height: 30px;
+    padding: 4px 20px;
+    font-size: 0.8rem;
   }
-  
-  .genre-option {
-	margin-left: 0;
-	color: #6b6b6b;
-	font-weight: 700;
+}
+
+@media (min-width: 426px) and (max-width: 767px) {
+  .genre-select {
+    height: 32px;
+    padding: 5px 22px;
+    font-size: 0.9rem;
   }
-  
-  .genre-select:focus {
-	outline: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .genre-select {
+    height: 36px;
+    padding: 6px 24px;
+    font-size: 1rem;
   }
-  
-  @media (max-width: 425px) {
-	.genre-select {
-	  height: 30px;
-	  padding: 4px 20px;
-	  font-size: 0.8rem;
-	}
+}
+
+@media (min-width: 1024px) {
+  .genre-select {
+    height: 40px;
+    padding: 8px 28px;
+    font-size: 1.1rem;
   }
-  
-  @media (min-width: 426px) and (max-width: 767px) {
-	.genre-select {
-	  height: 32px;
-	  padding: 5px 22px;
-	  font-size: 0.9rem;
-	}
-  }
-  
-  @media (min-width: 768px) and (max-width: 1023px) {
-	.genre-select {
-	  height: 36px;
-	  padding: 6px 24px;
-	  font-size: 1rem;
-	}
-  }
-  
-  @media (min-width: 1024px) {
-	.genre-select {
-	  height: 40px;
-	  padding: 8px 28px;
-	  font-size: 1.1rem;
-	}
-  }
+}

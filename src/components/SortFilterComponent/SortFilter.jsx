@@ -3,14 +3,14 @@ import "./SortFilter.css";
 
 // eslint-disable-next-line react/prop-types
 const SongFilter = ({ onFilterChange, onSortOrderChange }) => {
-//   const [filter, setFilter] = useState("");
+  //   const [filter, setFilter] = useState("");
   const [sortOrder, setSortOrder] = useState("recent");
 
-//   const handleFilterChange = (e) => {
-//     const value = e.target.value;
-//     setFilter(value);
-//     onFilterChange(value);
-//   };
+  //   const handleFilterChange = (e) => {
+  //     const value = e.target.value;
+  //     setFilter(value);
+  //     onFilterChange(value);
+  //   };
 
   const handleSortOrderChange = (value) => {
     setSortOrder(value);

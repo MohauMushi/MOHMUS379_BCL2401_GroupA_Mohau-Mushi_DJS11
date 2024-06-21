@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { FaPlay, FaStop, FaTimes } from 'react-icons/fa';
-import './AudioPlayer.css';
+import React, { useRef, useState, useEffect } from "react";
+import { FaPlay, FaStop, FaTimes } from "react-icons/fa";
+import "./AudioPlayer.css";
 
 const AudioPlayer = ({ episodeFile, handleClosePlayer }) => {
   const audioRef = useRef(null);
@@ -55,7 +55,7 @@ const AudioPlayer = ({ episodeFile, handleClosePlayer }) => {
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
   const handleCloseClick = () => {

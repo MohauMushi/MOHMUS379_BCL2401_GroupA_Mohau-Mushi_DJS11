@@ -59,13 +59,13 @@
 }
 
 .show-seasons,
-.show-updated{
+.show-updated {
   font-size: 14px;
   color: #666;
   margin-bottom: 4px;
 }
 
-.show-genres{
+.show-genres {
   color: #242222;
   font-weight: 700;
 }
