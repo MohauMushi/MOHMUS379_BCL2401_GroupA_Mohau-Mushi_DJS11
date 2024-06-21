@@ -15,7 +15,7 @@ const HomePage = () => {
   const [searchParams] = useSearchParams();
   const [searchResults, setSearchResults] = useState([]);
   const [filter, setFilter] = useState("");
-  const [sortOrder, setSortOrder] = useState("");
+  const [sortOrder, setSortOrder] = useState("a-z");
 
   useEffect(() => {
     const getPodcasts = async () => {
@@ -37,40 +37,48 @@ const HomePage = () => {
   //   ? shows.filter((show) => show.genres.includes(parseInt(genreFilter)))
   //   : shows;
 
-
   // const handleFilterChange = (value) => {
   //   setFilter(value);
   // }
 
   const handleSortOrderChange = (value) => {
     setSortOrder(value);
-  }
+  };
 
   const filteredShows = shows.filter((show) => {
-    return(
+    return (
       (!genreFilter || show.genres.includes(parseInt(genreFilter))) &&
       show.title.toLowerCase().includes(filter.toLowerCase())
-    )
-  })
+    );
+  });
 
   const sortedShows = filteredShows.sort((a, b) => {
     if (sortOrder === "recent") {
       return new Date(b.updated) - new Date(a.updated);
-    } else if(sortOrder === "least-recent"){
+    } else if (sortOrder === "least-recent") {
       return new Date(a.updated) - new Date(b.updated);
-    } else if(sortOrder === "a-z"){
+    } else if (sortOrder === "a-z") {
       return a.title.localeCompare(b.title);
-    } else if(sortOrder === "z-a"){
+    } else if (sortOrder === "z-a") {
       return b.title.localeCompare(a.title);
     }
     return 0;
-  })
+  });
 
   const renderShows = (showsToRender) => {
     return showsToRender.map((show) => (
-      <NavLink key={show.id} to={`/show/${show.id}`} className="preview-card-link">
+      <NavLink
+        key={show.id}
+        to={`/show/${show.id}`}
+        className="preview-card-link"
+      >
         <div className="show-card">
-          <img className="show-image" src={show.image} alt={show.title} title={show.title} />
+          <img
+            className="show-image"
+            src={show.image}
+            alt={show.title}
+            title={show.title}
+          />
           <div className="show-content">
             <h2 className="show-title">{show.title}</h2>
             <p className="show-line"></p>
@@ -84,22 +92,22 @@ const HomePage = () => {
       </NavLink>
     ));
   };
-  
-  
 
   return (
     <>
-    <div className="home_container">
-    <ShowCarousel shows={shows} />
-      <div className="home_top">
-        <GenreFilter />
-        <Search podcastShows={shows} setSearchResults={setSearchResults} />
-        <SongFilter onSortOrderChange={handleSortOrderChange} />
-      </div>
+      <div className="home_container">
+        <ShowCarousel shows={shows} />
+        <div className="home_top">
+          <GenreFilter />
+          <Search podcastShows={shows} setSearchResults={setSearchResults} />
+          <SongFilter onSortOrderChange={handleSortOrderChange} />
+        </div>
 
-      <div className="home-page">
-          {searchResults.length > 0 ? renderShows(searchResults) : renderShows(sortedShows)}
-      </div>
+        <div className="home-page">
+          {searchResults.length > 0
+            ? renderShows(searchResults)
+            : renderShows(sortedShows)}
+        </div>
       </div>
     </>
   );
