@@ -31,7 +31,7 @@ const PodcastPreview = () => {
       setLoading(true);
       const data = await fetchShowDetails(id);
       setShow(data);
-      setSelectedSeason(data.seasons[0]);
+      setSelectedSeason(data.seasons[-1]);
       setLoading(false);
     };
     getShowDetails();
