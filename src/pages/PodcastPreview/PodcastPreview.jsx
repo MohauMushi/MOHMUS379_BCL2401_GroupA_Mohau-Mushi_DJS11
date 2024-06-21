@@ -10,8 +10,7 @@ import {
 } from "@mui/material";
 import "./PodcastPreview.css";
 import { addFavorite } from "../../pages/FavoritesPage/Favorites";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { BsMusicPlayer } from "react-icons/bs";
+import { FaRegHeart, FaHeart, FaPlay } from "react-icons/fa";
 import { useAudioPlayer } from "../../components/AudioPlayer/AudioPlayerContext";
 
 const PodcastPreview = () => {
@@ -162,12 +161,12 @@ const PodcastPreview = () => {
                     </div>
                     <div className="episode_audio_favorites">
                       <div className="audio_player">
-                        <div
+                        <button
                           onClick={() => handleEpisodePlay(episode.file)}
                           className="play-button"
                         >
-                          <BsMusicPlayer className="music-player" />
-                        </div>
+                          <FaPlay className="music-player" />
+                        </button>
                       </div>
                       <div
                         className="add_to_favorites"
