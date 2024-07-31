@@ -53,15 +53,24 @@ const HomePage = () => {
   });
 
   const sortedShows = filteredShows.sort((a, b) => {
-    if (sortOrder === "recent") {
-      return new Date(b.updated) - new Date(a.updated);
-    } else if (sortOrder === "least-recent") {
-      return new Date(a.updated) - new Date(b.updated);
-    } else if (sortOrder === "a-z") {
+    if (sortOrder === "a-z") {
       return a.title.localeCompare(b.title);
     } else if (sortOrder === "z-a") {
       return b.title.localeCompare(a.title);
+    } else if (sortOrder === "least-recent") {
+      return new Date(a.updated) - new Date(b.updated);
+    } else if (sortOrder === "recent") {
+      return new Date(b.updated) - new Date(a.updated);
     }
+    // if (sortOrder === "recent") {
+    //   return new Date(b.updated) - new Date(a.updated);
+    // } else if (sortOrder === "least-recent") {
+    //   return new Date(a.updated) - new Date(b.updated);
+    // } else if (sortOrder === "a-z") {
+    //   return a.title.localeCompare(b.title);
+    // } else if (sortOrder === "z-a") {
+    //   return b.title.localeCompare(a.title);
+    // }
     return 0;
   });
 
